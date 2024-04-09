@@ -2,10 +2,10 @@
 
 [build]
 builder = "DOCKERFILE" # Utiliza Dockerfile como constructor
-buildCommand = "echo 'Building...'" # Comando de construcción personalizado
+buildCommand = "npm install && npm run build" # Comando de construcción personalizado
 
 [deploy]
-startCommand = "echo 'Starting...'" # Comando para iniciar la aplicación
+startCommand = "npm run start" # Comando para iniciar la aplicación
 healthcheckPath = "/api/ping" # Ruta para verificar la salud de la aplicación
 healthcheckTimeout = 100 # Tiempo de espera para el chequeo de salud
 restartPolicyType = "never" # Política de reinicio
