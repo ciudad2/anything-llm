@@ -1,5 +1,22 @@
+# Configuración de Railway para AnythingLLM
+
 [build]
-buildCommand = "npm install && npm run build"
+builder = "DOCKERFILE" # Utiliza Dockerfile como constructor
+buildCommand = "echo 'Building...'" # Comando de construcción personalizado
 
 [deploy]
-startCommand = "npm start"
+startCommand = "echo 'Starting...'" # Comando para iniciar la aplicación
+healthcheckPath = "/api/ping" # Ruta para verificar la salud de la aplicación
+healthcheckTimeout = 100 # Tiempo de espera para el chequeo de salud
+restartPolicyType = "never" # Política de reinicio
+
+# Configuración de las variables de entorno
+[env]
+PORT = "3001"
+STORAGE_DIR = "/storage"
+
+# Configuración del disco
+[[disks]]
+name = "AnythingLLM Storage"
+mountPath = "/storage"
+sizeGB = 10
